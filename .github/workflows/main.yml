@@ -29,6 +29,15 @@ jobs:
         
       - name: Restore NuGet package
         run: nuget restore dotnetframeworkWebApp.sln
+        
       - name: Build
-        run: msbuild dotnetframeworkWebApp.sln
-
+        run: msbuild dotnetframeworkWebApp.sln /p:Configuration=Release
+      - name: zip aritifact  
+        run: powershell Compress-Archive -Path bin\Release\Publish -DestinationPath app.zip
+        
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: app
+          path: app.zip
+      
