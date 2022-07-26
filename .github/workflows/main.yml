@@ -33,7 +33,7 @@ jobs:
       - name: Build
         run: msbuild dotnetframeworkWebApp.sln /p:Configuration=Release
       - name: zip aritifact  
-        run: Compress-Archive -Path dotnetframeworkWebApp\bin\Release\Publish -DestinationPath app.zip
+        run: Compress-Archive -Path dotnetframeworkWebApp\bin\ -DestinationPath app.zip
         
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.0
